@@ -1,49 +1,134 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "OpenVector Intelligence";
+const description =
+	"Análisis de exposición digital mediante OSINT y threat intelligence";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={title} description={description} />
 	</head>
 	<body>
 		<Header />
+
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- HERO -->
+			<section class="hero">
+				<h1>
+					Tu huella digital ya existe.
+					<br />
+					La pregunta es quién la está reconstruyendo.
+				</h1>
+
+				<p>
+					Analizamos tu exposición en internet mediante inteligencia
+					OSINT, correlacionando identidades, filtraciones y
+					artefactos digitales para identificar riesgos reales sobre
+					tu perfil.
+				</p>
+
+				<div class="hero-actions">
+					<a href="/contact" class="btn btn-primary"
+						>Analizar mi huella</a
+					>
+					<a href="/methodology" class="btn btn-secondary"
+						>Cómo funciona</a
+					>
+				</div>
+			</section>
+
+			<!-- HUELLA DIGITAL -->
+			<section class="section">
+				<div class="section-center">
+					<h2>Superficie de exposición digital</h2>
+					<p>
+						Cada dato público contribuye a una identidad
+						reconstruible. Nuestra misión es identificar, medir y
+						reducir esa exposición.
+					</p>
+				</div>
+
+				<div class="grid grid-3" style="margin-top: 3rem;">
+					<div class="card">
+						<h3>Recolección</h3>
+						<p>
+							Extracción de datos desde fuentes abiertas, leaks,
+							redes sociales y repositorios públicos.
+						</p>
+					</div>
+
+					<div class="card">
+						<h3>Correlación</h3>
+						<p>
+							Asociación de identidades mediante patrones,
+							reutilización de credenciales y metadata.
+						</p>
+					</div>
+
+					<div class="card">
+						<h3>Exposición</h3>
+						<p>
+							Identificación de información sensible accesible
+							para potenciales ataques dirigidos.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- SERVICIOS -->
+			<section class="section">
+				<div class="section-center">
+					<h2>Servicios</h2>
+				</div>
+
+				<div class="grid grid-3" style="margin-top: 3rem;">
+					<div class="card">
+						<h3>Investigación OSINT</h3>
+						<p>
+							Análisis profundo de huella digital y exposición en
+							internet.
+						</p>
+					</div>
+
+					<div class="card">
+						<h3>Remediación</h3>
+						<p>
+							Estrategias para eliminar datos y reducir superficie
+							de ataque.
+						</p>
+					</div>
+
+					<div class="card">
+						<h3>Monitoreo continuo</h3>
+						<p>
+							Vigilancia constante ante filtraciones y nuevas
+							exposiciones.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section class="section section-center">
+				<h2>Evalúa tu riesgo digital</h2>
+				<p>
+					Descubre qué información tuya está expuesta y cómo
+					protegerla.
+				</p>
+
+				<div style="margin-top: 2rem;">
+					<a href="/contact" class="btn btn-primary">
+						Iniciar evaluación
+					</a>
+				</div>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
