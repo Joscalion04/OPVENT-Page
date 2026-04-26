@@ -1,0 +1,195 @@
+---
+// ChatbotWidget.astro
+// Chatbot consultor avanzado: no solo chat, también aclara si estás donde quieres estar,
+// recopila datos de formularios y tiene checkboxes de duda por sección.
+---
+
+<div class="action-card chatbot-card">
+    <p class="action-label">Asistente Inteligente</p>
+    <h3>Chatbot consultor</h3>
+    <p class="action-desc">
+        No es solo un chat de consultas generales: permite aclarar realmente si
+        estás donde quieres estar, datos de formularios y más.
+    </p>
+
+    <!-- Checkbox de duda contextual -->
+    <div class="doubt-checkbox-area">
+        <label class="doubt-checkbox-label">
+            <input
+                type="checkbox"
+                id="doubt-trigger"
+                class="doubt-checkbox-input"
+            />
+            <span class="doubt-checkbox-custom"></span>
+            <span class="doubt-checkbox-text"
+                >¿Tienes alguna duda con esto?</span
+            >
+        </label>
+        <p class="doubt-hint">
+            Marca la casilla y el chatbot te ayudará en esta sección
+        </p>
+    </div>
+
+    <!-- Chat interface -->
+    <div class="chat-window" id="chat-window">
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-msg chat-msg--bot">
+                <div class="chat-msg-avatar">OV</div>
+                <div class="chat-msg-bubble">
+                    Hola, soy el asistente de OpenVector Intelligence. ¿En qué
+                    puedo ayudarte hoy? Puedo orientarte sobre nuestros
+                    servicios, análisis de huella digital, o aclarar cualquier
+                    duda sobre la plataforma.
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-quick-actions">
+            <button
+                class="chat-quick-btn"
+                onclick="sendQuick('¿Qué es el Escaneo Profundo?')"
+            >
+                ¿Qué es el Escaneo Profundo?
+            </button>
+            <button
+                class="chat-quick-btn"
+                onclick="sendQuick('¿Cómo protejo mi huella digital?')"
+            >
+                ¿Cómo protejo mi huella?
+            </button>
+            <button
+                class="chat-quick-btn"
+                onclick="sendQuick('¿Cuánto cuesta el servicio?')"
+            >
+                ¿Cuánto cuesta?
+            </button>
+        </div>
+
+        <div class="chat-input-area">
+            <input
+                type="text"
+                id="chat-input"
+                class="chat-input"
+                placeholder="Escribe tu pregunta aquí..."
+                autocomplete="off"
+            />
+            <button
+                class="chat-send-btn"
+                id="chat-send"
+                onclick="sendChatMessage()"
+            >
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const doubtCheckbox = document.getElementById(
+        "doubt-trigger",
+    ) as HTMLInputElement;
+    const chatWindow = document.getElementById("chat-window");
+    const chatMessages = document.getElementById("chat-messages");
+    const chatInput = document.getElementById("chat-input") as HTMLInputElement;
+
+    // Mostrar/ocultar chat al marcar checkbox
+    if (doubtCheckbox && chatWindow) {
+        chatWindow.style.display = "none";
+        doubtCheckbox.addEventListener("change", () => {
+            chatWindow.style.display = doubtCheckbox.checked ? "flex" : "none";
+            if (doubtCheckbox.checked) {
+                chatInput?.focus();
+            }
+        });
+    }
+
+    function appendMessage(text: string, role: "user" | "bot") {
+        if (!chatMessages) return;
+        const div = document.createElement("div");
+        div.className = `chat-msg chat-msg--${role}`;
+        if (role === "bot") {
+            div.innerHTML = `<div class="chat-msg-avatar">OV</div><div class="chat-msg-bubble">${text}</div>`;
+        } else {
+            div.innerHTML = `<div class="chat-msg-bubble chat-msg-bubble--user">${text}</div>`;
+        }
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+        if (!chatMessages) return null;
+        const div = document.createElement("div");
+        div.className = "chat-msg chat-msg--bot typing-indicator";
+        div.innerHTML = `<div class="chat-msg-avatar">OV</div><div class="chat-msg-bubble"><span></span><span></span><span></span></div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return div;
+    }
+
+    const knowledgeBase: Record<string, string> = {
+        "escaneo profundo":
+            "El Escaneo Profundo es nuestro análisis más exhaustivo. Correlaciona identidades digitales, busca en bases de datos de filtraciones, analiza metadata y genera un reporte detallado de tu superficie de exposición.",
+        "escaneo simple":
+            "El Escaneo Simple es una búsqueda rápida de tu huella básica: emails expuestos, usuarios en plataformas públicas y dominios asociados.",
+        "huella digital":
+            "Tu huella digital es toda la información pública sobre ti disponible en internet: perfiles, datos en filtraciones, publicaciones, metadatos, etc. Nosotros la analizamos para que sepas qué tan expuesto estás.",
+        cuesta: "Nuestros planes varían según el servicio. Te recomiendo contactarnos directamente en /contact para un presupuesto personalizado según tus necesidades.",
+        cacería:
+            "La Cacería de Amenazas es detección proactiva: buscamos actores maliciosos que puedan estar apuntando a tu organización o perfil específicamente.",
+        default:
+            "Gracias por tu pregunta. Para una respuesta más detallada, te recomiendo contactarnos directamente o explorar nuestros servicios en la sección de arriba. ¿Puedo ayudarte con algo más?",
+    };
+
+    function getBotResponse(input: string): string {
+        const lower = input.toLowerCase();
+        for (const key of Object.keys(knowledgeBase)) {
+            if (key !== "default" && lower.includes(key)) {
+                return knowledgeBase[key];
+            }
+        }
+        return knowledgeBase["default"];
+    }
+
+    (window as any).sendChatMessage = function () {
+        if (!chatInput || !chatInput.value.trim()) return;
+        const msg = chatInput.value.trim();
+        chatInput.value = "";
+        appendMessage(msg, "user");
+
+        const typing = showTyping();
+        setTimeout(
+            () => {
+                typing?.remove();
+                appendMessage(getBotResponse(msg), "bot");
+            },
+            900 + Math.random() * 600,
+        );
+    };
+
+    (window as any).sendQuick = function (text: string) {
+        if (doubtCheckbox && chatWindow) {
+            doubtCheckbox.checked = true;
+            chatWindow.style.display = "flex";
+        }
+        appendMessage(text, "user");
+        const typing = showTyping();
+        setTimeout(() => {
+            typing?.remove();
+            appendMessage(getBotResponse(text), "bot");
+        }, 800);
+    };
+
+    chatInput?.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") (window as any).sendChatMessage();
+    });
+</script>

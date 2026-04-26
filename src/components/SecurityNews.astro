@@ -1,0 +1,159 @@
+---
+// SecurityNews.astro
+// Noticias de ciberseguridad con análisis de impacto personal
+// Permite consulta sin login, y análisis detallado con login
+---
+
+<div class="panel news-panel">
+    <div class="panel-header">
+        <div class="panel-header-icon panel-header-icon--alert">
+            <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path
+                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                ></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+        </div>
+        <div>
+            <h2 class="panel-title">Noticias de Seguridad</h2>
+            <p class="panel-subtitle">
+                Permite ver noticias actuales de ciberseguridad. Si hay logging,
+                te puede indicar si te afecta a ti. Sin login: consulta rápida y
+                gratuita.
+            </p>
+        </div>
+    </div>
+
+    <nav class="panel-nav">
+        <a href="/security-news" class="panel-nav-link">Navegación</a>
+    </nav>
+
+    <div class="news-list">
+        <!-- Noticia 1 -->
+        <div class="news-item">
+            <div class="news-item-content">
+                <div class="news-severity news-severity--high">CRÍTICO</div>
+                <h4 class="news-title">
+                    Filtración masiva de datos en plataforma financiera
+                    latinoamericana
+                </h4>
+                <p class="news-excerpt">
+                    Se expusieron más de 3.2M de registros incluyendo emails,
+                    números de teléfono y datos bancarios parciales.
+                </p>
+                <div class="news-meta-row">
+                    <span class="news-date">
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="18"
+                                rx="2"
+                                ry="2"></rect><line
+                                x1="16"
+                                y1="2"
+                                x2="16"
+                                y2="6"></line><line x1="8" y1="2" x2="8" y2="6"
+                            ></line><line x1="3" y1="10" x2="21" y2="10"
+                            ></line></svg
+                        >
+                        Hace 2 días
+                    </span>
+                    <a
+                        href="/security-news/filtracion-financiera-latam"
+                        class="news-read-more">Leer más →</a
+                    >
+                </div>
+            </div>
+            <div class="news-impact-check">
+                <div class="impact-label">¿Te afecta?</div>
+                <a
+                    href="/check-impact?news=filtracion-financiera"
+                    class="impact-btn impact-btn--check"
+                >
+                    Verificar sin login
+                </a>
+                <a
+                    href="/login?redirect=/check-impact/detail?news=filtracion-financiera"
+                    class="impact-btn impact-btn--detail"
+                >
+                    Ver detalle completo
+                </a>
+            </div>
+        </div>
+
+        <!-- Noticia 2 -->
+        <div class="news-item">
+            <div class="news-item-content">
+                <div class="news-severity news-severity--medium">MODERADO</div>
+                <h4 class="news-title">
+                    Vulnerabilidad 0-day en librería de autenticación OAuth
+                    ampliamente utilizada
+                </h4>
+                <p class="news-excerpt">
+                    Permite bypass de autenticación en aplicaciones que no
+                    aplicaron el parche de seguridad reciente.
+                </p>
+                <div class="news-meta-row">
+                    <span class="news-date">
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            ><rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="18"
+                                rx="2"
+                                ry="2"></rect><line
+                                x1="16"
+                                y1="2"
+                                x2="16"
+                                y2="6"></line><line x1="8" y1="2" x2="8" y2="6"
+                            ></line><line x1="3" y1="10" x2="21" y2="10"
+                            ></line></svg
+                        >
+                        Hace 5 días
+                    </span>
+                    <a href="/security-news/oauth-0day" class="news-read-more"
+                        >Leer más →</a
+                    >
+                </div>
+            </div>
+            <div class="news-impact-check">
+                <div class="impact-label">¿Te afecta?</div>
+                <a
+                    href="/check-impact?news=oauth-0day"
+                    class="impact-btn impact-btn--check"
+                >
+                    Verificar sin login
+                </a>
+                <a
+                    href="/login?redirect=/check-impact/detail?news=oauth-0day"
+                    class="impact-btn impact-btn--detail"
+                >
+                    Ver detalle completo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

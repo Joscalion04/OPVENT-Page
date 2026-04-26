@@ -1,0 +1,139 @@
+---
+// Reviews.astro
+// Sección de reseñas de clientes anteriores con opción de ticket de recomendación
+---
+
+<div class="panel reviews-panel">
+    <div class="panel-header">
+        <div class="panel-header-icon">
+            <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                ></path>
+            </svg>
+        </div>
+        <div>
+            <h2 class="panel-title">Reseñas</h2>
+            <p class="panel-subtitle">
+                Se pueden ver las reseñas de experiencias de clientes
+                anteriores. Se tomará en cuenta cualquier recomendación de
+                feature abriendo un ticket de manera directa.
+            </p>
+        </div>
+    </div>
+
+    <nav class="panel-nav">
+        <a href="/reviews" class="panel-nav-link">Navegación</a>
+    </nav>
+
+    <div class="reviews-list">
+        <!-- Review 1 -->
+        <div class="review-item">
+            <div class="review-meta">
+                <div class="review-avatar">MR</div>
+                <div>
+                    <span class="review-name">María R.</span>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <div class="review-service-tag">
+                    <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        ><path
+                            d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+                        ></path><line x1="7" y1="7" x2="7.01" y2="7"
+                        ></line></svg
+                    >
+                    Escaneo Profundo
+                </div>
+            </div>
+            <p class="review-comment">
+                "Encontraron datos míos de filtraciones que desconocía. El
+                reporte fue claro y accionable. Excelente trabajo."
+            </p>
+            <div class="review-actions">
+                <span class="review-tag tag-rating">Calificación: 5/5</span>
+                <a
+                    href="/tickets/new?type=recommendation&ref=review-1"
+                    class="review-ticket-btn"
+                >
+                    <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        ><path
+                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                        ></path><polyline points="14 2 14 8 20 8"
+                        ></polyline></svg
+                    >
+                    Ticket de recomendación
+                </a>
+            </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-item">
+            <div class="review-meta">
+                <div class="review-avatar">CL</div>
+                <div>
+                    <span class="review-name">Carlos L.</span>
+                    <div class="review-stars">★★★★☆</div>
+                </div>
+                <div class="review-service-tag">
+                    <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        ><path
+                            d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+                        ></path><line x1="7" y1="7" x2="7.01" y2="7"
+                        ></line></svg
+                    >
+                    Cacería de Amenazas
+                </div>
+            </div>
+            <p class="review-comment">
+                "Muy profesional. Detectaron un intento de phishing dirigido a
+                mi empresa antes de que causara daño."
+            </p>
+            <div class="review-actions">
+                <span class="review-tag tag-rating">Calificación: 4/5</span>
+                <a
+                    href="/tickets/new?type=recommendation&ref=review-2"
+                    class="review-ticket-btn"
+                >
+                    <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        ><path
+                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                        ></path><polyline points="14 2 14 8 20 8"
+                        ></polyline></svg
+                    >
+                    Ticket de recomendación
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

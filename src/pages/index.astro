@@ -2,6 +2,9 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Reviews from "../components/Reviews.astro";
+import SecurityNews from "../components/SecurityNews.astro";
+import ChatbotWidget from "../components/ChatbotWidget.astro";
 
 const title = "OpenVector Intelligence";
 const description =
@@ -9,7 +12,7 @@ const description =
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
@@ -17,12 +20,29 @@ const description =
 		<Header />
 
 		<main>
-			<!-- HERO -->
+			<!-- ══════════════════════════════════════════════
+			     SECCIÓN SUPERIOR: Reseñas + Noticias de Seguridad
+			     ══════════════════════════════════════════════ -->
+			<section class="top-grid section">
+				<Reviews />
+				<SecurityNews />
+			</section>
+
+			<!-- ══════════════════════════════════════════════
+			     HERO: Presentación de la Empresa
+			     ══════════════════════════════════════════════ -->
 			<section class="hero">
+				<div class="hero-badge">
+					<span class="badge-dot"></span>
+					Threat Intelligence · OSINT · Digital Footprint
+				</div>
+
 				<h1>
 					Tu huella digital ya existe.
 					<br />
-					La pregunta es quién la está reconstruyendo.
+					<span class="gradient-text"
+						>La pregunta es quién la está reconstruyendo.</span
+					>
 				</h1>
 
 				<p>
@@ -40,11 +60,156 @@ const description =
 						>Cómo funciona</a
 					>
 				</div>
+
+				<div class="hero-stats">
+					<div class="stat">
+						<span class="stat-num">+2400</span>
+						<span class="stat-label">Fuentes monitoreadas</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat">
+						<span class="stat-num">98%</span>
+						<span class="stat-label">Precisión en correlación</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat">
+						<span class="stat-num">72h</span>
+						<span class="stat-label">Tiempo de análisis</span>
+					</div>
+				</div>
 			</section>
 
-			<!-- HUELLA DIGITAL -->
+			<!-- ══════════════════════════════════════════════
+			     ACCIONES: Login/SignUp + Chatbot
+			     ══════════════════════════════════════════════ -->
+			<section class="actions-grid section">
+				<!-- LOGIN / SIGNUP -->
+				<div class="action-card auth-card">
+					<p class="action-label">Acceso al SaaS</p>
+					<h3>Inicia sesión o crea tu cuenta</h3>
+					<p class="action-desc">
+						Gestiona tus análisis, reportes y alertas desde el panel
+						de control.
+					</p>
+					<div class="auth-buttons">
+						<a href="/login" class="btn btn-primary auth-btn"
+							>Login</a
+						>
+						<a href="/signup" class="btn btn-secondary auth-btn"
+							>Sign Up</a
+						>
+					</div>
+				</div>
+
+				<!-- CHATBOT -->
+				<ChatbotWidget />
+			</section>
+
+			<!-- ══════════════════════════════════════════════
+			     CARTELERA DEL SaaS
+			     ══════════════════════════════════════════════ -->
+			<section class="saas-section section">
+				<div class="section-center">
+					<p class="section-eyebrow">Plataforma SaaS</p>
+					<h2>Cartelera de Servicios</h2>
+					<p>
+						Herramientas profesionales de análisis OSINT accesibles
+						desde cualquier dispositivo.
+					</p>
+				</div>
+
+				<div class="saas-grid">
+					<a href="/saas/escaneo-simple" class="saas-card">
+						<div class="saas-card-icon">
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+							>
+								<circle cx="11" cy="11" r="8"></circle><path
+									d="m21 21-4.35-4.35"></path>
+							</svg>
+						</div>
+						<div class="saas-card-content">
+							<h3>Escaneo Simple</h3>
+							<p>
+								Búsqueda rápida de exposición digital básica:
+								emails, usuarios y dominio.
+							</p>
+						</div>
+						<span class="saas-card-arrow">→</span>
+					</a>
+
+					<a
+						href="/saas/escaneo-profundo"
+						class="saas-card saas-card--featured"
+					>
+						<div class="saas-card-badge">Recomendado</div>
+						<div class="saas-card-icon">
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+							>
+								<path
+									d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+								></path>
+							</svg>
+						</div>
+						<div class="saas-card-content">
+							<h3>Escaneo Profundo</h3>
+							<p>
+								Análisis exhaustivo de huella digital con
+								correlación de identidades y filtraciones.
+							</p>
+						</div>
+						<span class="saas-card-arrow">→</span>
+					</a>
+
+					<a href="/saas/caceria-amenazas" class="saas-card">
+						<div class="saas-card-icon">
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+							>
+								<path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+							</svg>
+						</div>
+						<div class="saas-card-content">
+							<h3>Cacería de Amenazas</h3>
+							<p>
+								Detección proactiva de amenazas activas
+								dirigidas a tu organización o perfil.
+							</p>
+						</div>
+						<span class="saas-card-arrow">→</span>
+					</a>
+				</div>
+
+				<div class="saas-cta">
+					<a href="/login" class="btn btn-primary">Acceder al SaaS</a>
+					<a href="/contact" class="btn btn-secondary"
+						>Solicitar demo</a
+					>
+				</div>
+			</section>
+
+			<!-- ══════════════════════════════════════════════
+			     SUPERFICIE DE EXPOSICIÓN DIGITAL
+			     ══════════════════════════════════════════════ -->
 			<section class="section">
 				<div class="section-center">
+					<p class="section-eyebrow">Metodología</p>
 					<h2>Superficie de exposición digital</h2>
 					<p>
 						Cada dato público contribuye a una identidad
@@ -54,23 +219,24 @@ const description =
 				</div>
 
 				<div class="grid grid-3" style="margin-top: 3rem;">
-					<div class="card">
+					<div class="card card--step">
+						<span class="step-num">01</span>
 						<h3>Recolección</h3>
 						<p>
 							Extracción de datos desde fuentes abiertas, leaks,
 							redes sociales y repositorios públicos.
 						</p>
 					</div>
-
-					<div class="card">
+					<div class="card card--step">
+						<span class="step-num">02</span>
 						<h3>Correlación</h3>
 						<p>
 							Asociación de identidades mediante patrones,
 							reutilización de credenciales y metadata.
 						</p>
 					</div>
-
-					<div class="card">
+					<div class="card card--step">
+						<span class="step-num">03</span>
 						<h3>Exposición</h3>
 						<p>
 							Identificación de información sensible accesible
@@ -80,51 +246,24 @@ const description =
 				</div>
 			</section>
 
-			<!-- SERVICIOS -->
-			<section class="section">
-				<div class="section-center">
-					<h2>Servicios</h2>
-				</div>
-
-				<div class="grid grid-3" style="margin-top: 3rem;">
-					<div class="card">
-						<h3>Investigación OSINT</h3>
-						<p>
-							Análisis profundo de huella digital y exposición en
-							internet.
-						</p>
-					</div>
-
-					<div class="card">
-						<h3>Remediación</h3>
-						<p>
-							Estrategias para eliminar datos y reducir superficie
-							de ataque.
-						</p>
-					</div>
-
-					<div class="card">
-						<h3>Monitoreo continuo</h3>
-						<p>
-							Vigilancia constante ante filtraciones y nuevas
-							exposiciones.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- CTA -->
-			<section class="section section-center">
-				<h2>Evalúa tu riesgo digital</h2>
+			<!-- ══════════════════════════════════════════════
+			     CTA FINAL
+			     ══════════════════════════════════════════════ -->
+			<section class="cta-section section section-center">
+				<div class="cta-glow"></div>
+				<p class="section-eyebrow">Próximo paso</p>
+				<h2>Evalúa tu riesgo digital hoy</h2>
 				<p>
 					Descubre qué información tuya está expuesta y cómo
-					protegerla.
+					protegerla antes de que alguien más lo haga.
 				</p>
-
-				<div style="margin-top: 2rem;">
-					<a href="/contact" class="btn btn-primary">
-						Iniciar evaluación
-					</a>
+				<div
+					style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+				>
+					<a href="/contact" class="btn btn-primary"
+						>Iniciar evaluación</a
+					>
+					<a href="/saas" class="btn btn-secondary">Ver el SaaS</a>
 				</div>
 			</section>
 		</main>
