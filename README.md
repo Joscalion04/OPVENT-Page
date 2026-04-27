@@ -1,63 +1,259 @@
-# Astro Starter Kit: Blog
+# OpenVector Intelligence – Landing Page
 
-```sh
-npm create astro@latest -- --template blog
-```
+Landing page oficial de OpenVector Intelligence, desarrollada con Astro. Este proyecto está diseñado para ofrecer alto rendimiento, seguridad, escalabilidad y una base sólida para la expansión futura de servicios, contenido técnico y capacidades interactivas.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-Features:
+## Descripción General
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Este repositorio contiene la implementación de la landing page corporativa de OpenVector Intelligence. Incluye:
 
-## 🚀 Project Structure
+- Presentación de servicios de ciberseguridad
+- Blog técnico con soporte Markdown/MDX
+- Componentes reutilizables orientados a UI/UX y seguridad
+- Integración de widgets dinámicos (por ejemplo, chatbot)
+- Preparación para SEO, RSS y distribución de contenido
 
-Inside of your Astro project, you'll see the following folders and files:
+El proyecto sigue principios de desarrollo moderno: desacoplamiento, modularidad, rendimiento optimizado y superficie de ataque reducida.
+
+---
+
+## Stack Tecnológico
+
+- **Framework:** Astro
+- **Lenguajes:** TypeScript, HTML, CSS
+- **Contenido:** Markdown (MD), MDX
+- **Gestión de dependencias:** npm
+- **Arquitectura:** Static Site Generation (SSG)
+
+---
+
+## Estructura del Proyecto
 
 ```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
 ├── astro.config.mjs
-├── README.md
 ├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── logo.jpg
+│   ├── logo.png
+│   ├── openvector-logo.png
+│   └── wall.png
+├── README.md
+├── src
+│   ├── assets
+│   │   ├── blog-placeholder-1.jpg
+│   │   ├── blog-placeholder-2.jpg
+│   │   ├── blog-placeholder-3.jpg
+│   │   ├── blog-placeholder-4.jpg
+│   │   ├── blog-placeholder-5.jpg
+│   │   ├── blog-placeholder-about.jpg
+│   │   └── fonts
+│   │       ├── atkinson-bold.woff
+│   │       └── atkinson-regular.woff
+│   ├── components
+│   │   ├── BaseHead.astro
+│   │   ├── ChatbotWidget.astro
+│   │   ├── Footer.astro
+│   │   ├── FormattedDate.astro
+│   │   ├── Header.astro
+│   │   ├── HeaderLink.astro
+│   │   ├── Reviews.astro
+│   │   └── SecurityNews.astro
+│   ├── consts.ts
+│   ├── content
+│   │   └── blog
+│   │       ├── first-post.md
+│   │       ├── markdown-style-guide.md
+│   │       ├── second-post.md
+│   │       ├── third-post.md
+│   │       └── using-mdx.mdx
+│   ├── content.config.ts
+│   ├── layouts
+│   │   └── BlogPost.astro
+│   ├── pages
+│   │   ├── about.astro
+│   │   ├── blog
+│   │   │   ├── index.astro
+│   │   │   └── [...slug].astro
+│   │   ├── index.astro
+│   │   └── rss.xml.js
+│   └── styles
+│       └── global.css
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+```markdown
+# Arquitectura y Diseño
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 1. Enfoque SSG (Static Site Generation)
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+El proyecto utiliza generación estática para:
 
-Any static assets, like images, can be placed in the `public/` directory.
+- Reducir la superficie de ataque (sin backend expuesto)
+- Mejorar tiempos de carga (TTFB bajo)
+- Facilitar despliegue en CDN
 
-## 🧞 Commands
+## 2. Componentización
 
-All commands are run from the root of the project, from a terminal:
+Los componentes están diseñados para ser reutilizables y desacoplados:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Header.astro** y **Footer.astro**: navegación y estructura global
+- **BaseHead.astro**: control de metadatos, SEO y headers
+- **ChatbotWidget.astro**: integración de interacción automatizada
+- **SecurityNews.astro**: potencial integración con feeds externos
 
-## 👀 Want to learn more?
+## 3. Gestión de Contenido
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Uso de content collections de Astro:
 
-## Credit
+- Validación de esquema mediante `content.config.ts`
+- Tipado seguro en TypeScript
+- Separación clara entre contenido y lógica
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## 4. Blog Técnico
+
+- Soporte para Markdown y MDX
+- Layout dedicado (`BlogPost.astro`)
+- Generación dinámica de rutas (`[...slug].astro`)
+- RSS feed automático (`rss.xml.js`)
+
+---
+
+# Consideraciones de Seguridad
+
+Este proyecto, aunque es frontend estático, sigue buenas prácticas de seguridad:
+
+## 1. Hardening del Frontend
+
+- Evitar inline scripts no controlados
+- Sanitización de contenido MDX si se permite entrada externa
+- Uso estricto de headers en despliegue:
+  - Content Security Policy (CSP)
+  - X-Frame-Options
+  - X-Content-Type-Options
+
+## 2. Dependencias
+
+Auditoría periódica con:
+
+```bash
+npm audit
+```
+
+Fijación de versiones mediante `package-lock.json`
+
+## 3. Chatbot / Integraciones
+
+El componente `ChatbotWidget` debe:
+
+- Evitar exposición de tokens en frontend
+- Consumir APIs mediante proxy seguro si aplica
+- Implementar rate limiting del lado servidor (si se conecta a backend)
+
+---
+
+# Instalación
+
+```bash
+git clone <repository-url>
+cd openvector-landing
+npm install
+```
+
+# Ejecución en Desarrollo
+
+```bash
+npm run dev
+```
+
+Servidor disponible en: `http://localhost:4321`
+
+# Build de Producción
+
+```bash
+npm run build
+```
+
+Salida generada en: `/dist`
+
+# Previsualización
+
+```bash
+npm run preview
+```
+
+---
+
+# Buenas Prácticas de Desarrollo
+
+- Mantener separación entre lógica, presentación y contenido
+- Evitar lógica compleja en componentes `.astro`
+- Centralizar constantes en `consts.ts`
+- Documentar cambios estructurales relevantes
+- Validar contenido antes de despliegue
+
+---
+
+# Escalabilidad
+
+Este proyecto está preparado para evolucionar hacia:
+
+- Integración con backend (API Gateway / BFF)
+- Autenticación de usuarios (para dashboards o clientes)
+- Multi-tenant content delivery
+- Internacionalización (i18n)
+- Integración con plataformas de análisis (SIEM dashboards embebidos)
+
+---
+
+# SEO y Distribución
+
+Incluye:
+
+- Metadatos dinámicos
+- Open Graph
+- Sitemap
+- RSS Feed
+
+**Recomendaciones adicionales:**
+
+- Integrar schema.org (JSON-LD)
+- Optimizar imágenes (WebP/AVIF)
+- Implementar lazy loading
+
+---
+
+# Despliegue
+
+Compatible con:
+
+- Vercel
+- Netlify
+- Cloudflare Pages
+- CDN estáticos (S3 + CloudFront)
+
+**Recomendación:**
+
+- Configurar headers de seguridad en el edge
+- Usar WAF en capa CDN
+
+---
+
+# Licencia
+
+Propiedad de OpenVector Intelligence. Uso interno o bajo autorización.
+
+---
+
+# Mantenimiento
+
+**Responsabilidades:**
+
+- Actualización de dependencias
+- Revisión de seguridad
+- Publicación de contenido técnico
+- Optimización continua de rendimiento
+```
